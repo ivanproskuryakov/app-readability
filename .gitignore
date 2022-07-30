@@ -1,0 +1,9 @@
+/node_modules
+/coverage/
+/build
+.vscode/
+.idea/
+.nyc_output/
+npm-debug.log
+all.log
+#parameters.json
