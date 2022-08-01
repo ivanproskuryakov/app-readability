@@ -1,6 +1,6 @@
 import {ExpressErrorMiddlewareInterface, Middleware} from 'routing-controllers';
 import express from 'express';
-import {ValidationError} from 'class-validator';
+
 import * as Sentry from '@sentry/node';
 
 @Middleware({type: 'after'})
@@ -24,18 +24,6 @@ export class ErrorHandler implements ExpressErrorMiddlewareInterface {
 
     if (error.errors && error.errors.length > 0) {
       responseError.errors = error.errors;
-    }
-
-    if (error.violations && error.violations.length > 0) {
-      responseError.errors = [];
-      error.violations.forEach((v: ValidationError) => {
-        responseError.errors?.push({
-          value: v.value,
-          property: v.property,
-          constraints: v.constraints,
-          children: v.children,
-        });
-      });
     }
 
     this.captureSentry(httpCode, error);

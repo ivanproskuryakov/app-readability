@@ -1,8 +1,11 @@
 import {Container} from 'inversify';
 
-
-import {OpenApi} from '../service/OpenApi';
 import {IConfigParameters} from "../interface/IConfigParameters";
+
+import {Http} from "../service/Http";
+import {OpenApi} from '../service/OpenApi';
+import {Executor} from "../service/Executor";
+import {ExecutionInterceptor} from "../service/ExecutionInterceptor";
 
 export class AppContainer {
   private static container: Container;
@@ -20,6 +23,10 @@ export class AppContainer {
 
     container.bind<string>('env').toConstantValue(env);
     container.bind<IConfigParameters>('parameters').toConstantValue(parameters);
+
+    container.bind<ExecutionInterceptor>('ExecutionInterceptor').to(ExecutionInterceptor);
+    container.bind<Http>('Http').to(Http);
+    container.bind<Executor>('Executor').to(Executor);
     container.bind<OpenApi>('OpenApi').to(OpenApi);
 
     AppContainer.container = container;

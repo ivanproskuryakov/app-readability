@@ -1,6 +1,8 @@
 import * as _ from 'lodash';
 import Axios, {AxiosResponse} from 'axios';
+import {injectable} from "inversify";
 
+@injectable()
 export class Http {
   public static async request(options: any = {}): Promise<AxiosResponse> {
     const config: any = {

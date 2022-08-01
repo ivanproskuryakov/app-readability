@@ -1,17 +1,21 @@
+import {injectable, inject} from "inversify";
 import moment from 'moment';
 import * as Sentry from '@sentry/node';
 
 import RejectedExecutionException from '../exception/RejectedExecutionException';
-import {AppConfig} from '../app/AppConfig';
+import {IConfigParameters} from "../interface/IConfigParameters";
 
+@injectable()
 export class ExecutionInterceptor {
+  @inject('env')
+  protected env: string;
+  @inject('parameters')
+  protected parameters: IConfigParameters;
   protected timerStarted: moment.Moment;
   protected timoutSeconds: number;
   protected counter: number;
-  protected env: string;
 
-  constructor(timoutSeconds: number) {
-    this.env = AppConfig.getEnv();
+  public init(timoutSeconds: number) {
     this.timoutSeconds = timoutSeconds;
     this.timerStarted = moment();
     this.counter = 0;

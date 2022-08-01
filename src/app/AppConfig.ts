@@ -11,8 +11,6 @@ export class AppConfig {
     local: ['development'],
   };
 
-  private static parameters: IConfigParameters;
-
   public static getEnv(): string {
     return process.env.NODE_ENV || 'development';
   }
@@ -23,16 +21,6 @@ export class AppConfig {
 
   public static isLocal(): boolean {
     return AppConfig.ENV.local.indexOf(AppConfig.getEnv()) > -1;
-  }
-
-  public static read(): IConfigParameters {
-    if (this.parameters) {
-      return this.parameters;
-    }
-
-    AppConfig.parameters = this.readLocal();
-
-    return AppConfig.parameters;
   }
 
   public static readLocal(): IConfigParameters {

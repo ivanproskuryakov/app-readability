@@ -4,6 +4,3 @@
 .vscode/
 .idea/
 .nyc_output/
-npm-debug.log
-all.log
-#parameters.json
