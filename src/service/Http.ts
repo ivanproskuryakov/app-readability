@@ -1,28 +1,15 @@
-import * as _ from 'lodash';
 import Axios, {AxiosResponse} from 'axios';
-import {inject, injectable} from 'inversify';
-
-import {ExecutionInterceptor} from "./ExecutionInterceptor";
+import {injectable} from 'inversify';
 
 @injectable()
 export class Http {
-  @inject('ExecutionInterceptor')
-  protected executionInterceptor: ExecutionInterceptor;
 
-  public async requestGet(url: string) {
-    const response = await this.request({
-      url
-    });
-
-    return response.data;
-  }
-
-  public async request(options: any = {}): Promise<AxiosResponse> {
+  public async request(url: string, timeout: number): Promise<AxiosResponse> {
     const config: any = {
+      url: url,
       method: 'GET',
+      timeout: timeout,
     };
-
-    _.assign(config, options);
 
     try {
       return await Axios.request(config);
