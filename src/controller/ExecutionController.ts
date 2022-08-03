@@ -3,7 +3,7 @@ import {Post, Body, HttpCode, JsonController} from 'routing-controllers';
 import {App} from '../app/App';
 import {Executor} from '../service/Executor';
 
-@JsonController('/executor')
+@JsonController('/execution')
 export class ExecutionController {
   protected executor: Executor;
 

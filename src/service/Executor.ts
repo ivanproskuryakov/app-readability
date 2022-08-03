@@ -37,7 +37,10 @@ export class Executor {
     let text = ''
 
     try {
-      const response = await this.http.request(url, Executor.TIMEOUT_MS);
+      const response = await this.http.request({
+        url,
+        timeout: Executor.TIMEOUT_MS
+      });
       const doc = new JSDOM(response.data, {
         url
       });

@@ -1,15 +1,15 @@
+import * as _ from 'lodash';
 import Axios, {AxiosResponse} from 'axios';
 import {injectable} from 'inversify';
 
 @injectable()
 export class Http {
-
-  public async request(url: string, timeout: number): Promise<AxiosResponse> {
+  public async request(options: any = {}): Promise<AxiosResponse> {
     const config: any = {
-      url: url,
       method: 'GET',
-      timeout: timeout,
     };
+
+    _.assign(config, options);
 
     try {
       return await Axios.request(config);
