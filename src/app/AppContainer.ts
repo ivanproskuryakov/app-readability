@@ -1,11 +1,11 @@
 import {Container} from 'inversify';
 
-import {IConfigParameters} from "../interface/IConfigParameters";
+import {IConfigParameters} from '../interface/IConfigParameters';
 
-import {Http} from "../service/Http";
+import {Http} from '../service/Http';
 import {OpenApi} from '../service/OpenApi';
-import {Executor} from "../service/Executor";
-import {ExecutionInterceptor} from "../service/ExecutionInterceptor";
+import {Executor} from '../service/Executor';
+import {ExecutionInterceptor} from '../service/ExecutionInterceptor';
 
 export class AppContainer {
   private static container: Container;

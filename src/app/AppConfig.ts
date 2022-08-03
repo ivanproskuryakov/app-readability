@@ -2,8 +2,7 @@ import 'reflect-metadata';
 import {join} from 'path';
 import fs from 'fs';
 import * as _ from 'lodash';
-import {IConfigParameters} from "../interface/IConfigParameters";
-
+import {IConfigParameters} from '../interface/IConfigParameters';
 
 export class AppConfig {
   public static readonly ENV = {
@@ -34,5 +33,4 @@ export class AppConfig {
 
     return _.merge(global, environment);
   }
-
 }

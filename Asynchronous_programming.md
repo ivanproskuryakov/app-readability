@@ -6,11 +6,10 @@ that the caller can limit the number of concurrent fetches run in parallel. A mi
 for such a component could be the following
 
 ```tsx
-async function runInParallel (urls: string[], concurrency: number) : Promise<string[]> {
+async function runInParallel(urls: string[], concurrency: number): Promise<string[]> {
   // ...
 }
 ```
-
 
 Important questions to consider:
 

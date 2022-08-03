@@ -12,5 +12,4 @@ export class AppConfigTest {
     expect(params).to.be.an.instanceOf(Object);
     expect(params).to.contain.keys(['host', 'port']);
   }
-
 }

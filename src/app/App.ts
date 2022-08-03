@@ -13,7 +13,7 @@ import {OpenApi} from '../service/OpenApi';
 import {HealthCheckController} from '../controller/HealthCheckController';
 import {ErrorHandler} from '../middleware/ErrorHandler';
 import {AppConfig} from './AppConfig';
-import {IConfigParameters} from "../interface/IConfigParameters";
+import {IConfigParameters} from '../interface/IConfigParameters';
 
 const swaggerUiExpress = require('swagger-ui-express');
 const boolParser = require('express-query-boolean');
@@ -99,9 +99,7 @@ export class App {
         exposedHeaders: ['Authorization', 'Location', 'Refresh-Token', 'sentry-trace'],
       },
       routePrefix: '/api',
-      controllers: [
-        HealthCheckController,
-      ],
+      controllers: [HealthCheckController],
     });
   }
 

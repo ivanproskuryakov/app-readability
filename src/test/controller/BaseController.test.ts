@@ -6,7 +6,7 @@ import {App} from '../../app/App';
 import {AppConfig} from '../../app/AppConfig';
 import {AppContainer} from '../../app/AppContainer';
 import {createAppTest} from '../../app/AppBootstrap';
-import {IConfigParameters} from "../../interface/IConfigParameters";
+import {IConfigParameters} from '../../interface/IConfigParameters';
 
 export class BaseControllerTest {
   protected url: string;
@@ -24,18 +24,20 @@ export class BaseControllerTest {
   }
 
   @timeout(10000)
-  async before() {
+  before() {
     this.app = createAppTest();
-    await this.app.boostrap();
+    this.app.boostrap();
     this.app.start();
   }
 
-  async after() {
+  after() {
     const pendedMocks = nock.pendingMocks();
+
     if (pendedMocks.length > 0) {
       console.log('There are pended mocks that should be removed');
       nock.cleanAll();
     }
-    await this.app.stop();
+
+    this.app.stop();
   }
 }

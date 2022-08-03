@@ -1,9 +1,9 @@
-import {injectable, inject} from "inversify";
+import {injectable, inject} from 'inversify';
 import moment from 'moment';
 import * as Sentry from '@sentry/node';
 
 import RejectedExecutionException from '../exception/RejectedExecutionException';
-import {IConfigParameters} from "../interface/IConfigParameters";
+import {IConfigParameters} from '../interface/IConfigParameters';
 
 @injectable()
 export class ExecutionInterceptor {

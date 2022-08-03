@@ -7,7 +7,9 @@ export class ExecutionInterceptorTest {
   @test()
   @timeout(20000)
   rejectExecutionIfFrozen() {
-    const executionInterceptor = new ExecutionInterceptor(1);
+    const executionInterceptor = new ExecutionInterceptor();
+
+    executionInterceptor.init(1);
 
     let err = null;
 
