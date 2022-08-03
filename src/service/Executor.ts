@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 import {JSDOM} from 'jsdom';
 
 import {Http} from './Http';
-import {IText} from "../interface/IText";
+import {IText} from '../interface/IText';
 
 @injectable()
 export class Executor {
@@ -19,11 +19,11 @@ export class Executor {
     const texts = [];
 
     for (let i = 0; i < chunks.length; i++) {
-      const urls = chunks[i]
+      const urls = chunks[i];
       const promises = [];
 
       for (let j = 0; j < urls.length; j++) {
-        promises.push(this.read(urls[j]))
+        promises.push(this.read(urls[j]));
       }
 
       texts.push(await Promise.all(promises));
@@ -34,15 +34,15 @@ export class Executor {
 
   private async read(url: string): Promise<IText> {
     let error = '';
-    let text = ''
+    let text = '';
 
     try {
       const response = await this.http.request({
         url,
-        timeout: Executor.TIMEOUT_MS
+        timeout: Executor.TIMEOUT_MS,
       });
       const doc = new JSDOM(response.data, {
-        url
+        url,
       });
 
       const reader = new Readability(doc.window.document);

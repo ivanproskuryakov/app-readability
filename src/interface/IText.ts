@@ -1,5 +1,5 @@
 export interface IText {
-  url: string,
-  text: string,
-  error: string,
+  url: string;
+  text: string;
+  error: string;
 }

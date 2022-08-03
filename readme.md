@@ -1,3 +1,5 @@
+### Features
+
 - [./Asynchronous_programming.md](./Asynchronous_programming.md)
 
 ### Installation
@@ -15,8 +17,8 @@ All tests
 npm run test
 
 Single test
-NODE_ENV=test node ./node_modules/.bin/mocha --require ts-node/register ./src/test/controller/HealthCheckController.test.ts
+NODE_ENV=test node ./node_modules/.bin/mocha --require ts-node/register ./src/test/controller/ExecutionController.test.ts
 
 Single test debugging
-NODE_ENV=test node --inspect ./node_modules/.bin/mocha --require ts-node/register ./src/test/controller/HealthCheckController.test.ts
+NODE_ENV=test node --inspect ./node_modules/.bin/mocha --require ts-node/register ./src/test/controller/ExecutionController.test.ts
 ```

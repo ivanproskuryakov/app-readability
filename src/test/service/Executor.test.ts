@@ -1,12 +1,12 @@
 import {suite, test} from '@testdeck/mocha';
 import nock from 'nock';
-import {join} from "path";
-import fs from "fs";
+import {join} from 'path';
+import fs from 'fs';
 
 import {Executor} from '../../service/Executor';
-import {AppConfig} from "../../app/AppConfig";
-import {AppContainer} from "../../app/AppContainer";
-import {expect} from "chai";
+import {AppConfig} from '../../app/AppConfig';
+import {AppContainer} from '../../app/AppContainer';
+import {expect} from 'chai';
 
 @suite()
 export class ExecutorTest {
@@ -29,7 +29,7 @@ export class ExecutorTest {
       Mount_Kenya: fs.readFileSync(join(__dirname, '../fixture/wiki/Mount_Kenya')),
       Mount_Kilimanjaro: fs.readFileSync(join(__dirname, '../fixture/wiki/Mount_Kilimanjaro')),
       Puncak_Jaya: fs.readFileSync(join(__dirname, '../fixture/wiki/Puncak_Jaya')),
-    }
+    };
 
     nock(this.wiki).get('/wiki/Mount_Elbrus').once().reply(200, data.Mount_Elbrus);
     nock(this.wiki).get('/wiki/Mount_Everest').once().reply(200, data.Mount_Everest);
@@ -99,7 +99,7 @@ export class ExecutorTest {
     expect(texts[0][1]).to.be.deep.eq({
       url: 'https://en.wikipedia.org/timeout2000',
       text: '',
-      error: 'timeout of 200ms exceeded'
+      error: 'timeout of 200ms exceeded',
     });
   }
 
@@ -116,7 +116,7 @@ export class ExecutorTest {
     expect(texts[0][1]).to.be.deep.eq({
       url: 'https://en.wikipedia.org/error404',
       text: '',
-      error: 'Request failed with status code 404'
+      error: 'Request failed with status code 404',
     });
   }
 }

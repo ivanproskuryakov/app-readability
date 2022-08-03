@@ -1,6 +1,6 @@
-import fs from "fs";
-import {join} from "path";
-import nock from "nock";
+import fs from 'fs';
+import {join} from 'path';
+import nock from 'nock';
 import {expect} from 'chai';
 
 import {suite, test} from '@testdeck/mocha';
@@ -22,7 +22,7 @@ export class ExecutionControllerTest extends BaseControllerTest {
   async runInParallel() {
     const data = {
       Mount_Elbrus: fs.readFileSync(join(__dirname, '../fixture/wiki/Mount_Elbrus')),
-    }
+    };
 
     nock(this.wiki).get('/wiki/Mount_Elbrus').once().reply(200, data.Mount_Elbrus);
 
@@ -30,11 +30,9 @@ export class ExecutionControllerTest extends BaseControllerTest {
       url: `${this.url}/api/execution/runInParallel`,
       method: 'POST',
       data: {
-        urls: [
-          'https://en.wikipedia.org/wiki/Mount_Elbrus',
-        ],
+        urls: ['https://en.wikipedia.org/wiki/Mount_Elbrus'],
         concurrency: 1,
-      }
+      },
     };
     const response = await this.http.request(config);
 
