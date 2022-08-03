@@ -11,6 +11,7 @@ import {AppContainer} from './AppContainer';
 import {OpenApi} from '../service/OpenApi';
 
 import {ExecutionController} from '../controller/ExecutionController';
+import {HelpController} from '../controller/HelpController';
 import {ErrorHandler} from '../middleware/ErrorHandler';
 import {AppConfig} from './AppConfig';
 import {IConfigParameters} from '../interface/IConfigParameters';
@@ -99,7 +100,7 @@ export class App {
         exposedHeaders: ['Authorization', 'Location', 'Refresh-Token', 'sentry-trace'],
       },
       routePrefix: '/api',
-      controllers: [ExecutionController],
+      controllers: [ExecutionController, HelpController],
     });
   }
 

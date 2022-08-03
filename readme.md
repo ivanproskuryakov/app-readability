@@ -10,6 +10,12 @@ Install node packages:
 Ensure there are no errors by execution of all tests
 `npm run test`
 
+### OpenAPI
+
+```
+http://0.0.0.0:4000/api/help/openApi
+```
+
 ### Tests
 
 ```
