@@ -89,38 +89,34 @@ export class ExecutorTest {
   @test()
   async runInParallel_timeout2000() {
     const urls = [
+      'https://en.wikipedia.org/wiki/Mount_Elbrus',
       'https://en.wikipedia.org/timeout2000',
     ];
 
     const texts = await this.executor.runInParallel(urls, 2);
 
-    expect(texts).to.be.deep.eq([
-      [
-        {
-          url: 'https://en.wikipedia.org/timeout2000',
-          text: '',
-          error: 'timeout of 200ms exceeded'
-        }
-      ]
-    ]);
+    expect(texts.length).to.be.eq(1);
+    expect(texts[0][1]).to.be.deep.eq({
+      url: 'https://en.wikipedia.org/timeout2000',
+      text: '',
+      error: 'timeout of 200ms exceeded'
+    });
   }
 
   @test()
   async runInParallel_error404() {
     const urls = [
+      'https://en.wikipedia.org/wiki/Mount_Elbrus',
       'https://en.wikipedia.org/error404',
     ];
 
     const texts = await this.executor.runInParallel(urls, 2);
 
-    expect(texts).to.be.deep.eq([
-      [
-        {
-          url: 'https://en.wikipedia.org/error404',
-          text: '',
-          error: 'Request failed with status code 404'
-        }
-      ]
-    ]);
+    expect(texts.length).to.be.eq(1);
+    expect(texts[0][1]).to.be.deep.eq({
+      url: 'https://en.wikipedia.org/error404',
+      text: '',
+      error: 'Request failed with status code 404'
+    });
   }
 }
